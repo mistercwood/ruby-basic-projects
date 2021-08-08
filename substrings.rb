@@ -18,13 +18,13 @@
 
 def substrings(string, dictionary)
 
-  words = string.split(" ")
+  words = string.downcase.split(" ")
   sub_array = []
 
   words.each do |word|
-    dictionary.each do |sub_string|
-      if word.downcase.include? sub_string.downcase 
-      sub_array << sub_string
+    dictionary.each do |dictionary_word|
+      if word.include? dictionary_word
+      sub_array << dictionary_word
       end
     end
   end
