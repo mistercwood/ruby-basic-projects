@@ -11,14 +11,29 @@
 # > substrings("below", dictionary)
 # => { "below" => 1, "low" => 1 }
 
+# Next, make sure your method can handle multiple words:
+
+# > substrings("Howdy partner, sit down! How's it going?", dictionary)
+# => { "down" => 1, "go" => 1, "going" => 1, "how" => 2, "howdy" => 1, "it" => 2, "i" => 3, "own" => 1, "part" => 1, "partner" => 1, "sit" => 1 }
+
 def substrings(string, dictionary)
 
-  sub_arr = Array.new dictionary.select { |sub| string.downcase.include? sub }
-  sub_arr.reduce(Hash.new(0)) do |word, count|
+  words = string.split(" ")
+  sub_array = []
+
+  words.each do |word|
+    dictionary.each do |sub_string|
+      if word.downcase.include? sub_string.downcase 
+      sub_array << sub_string
+      end
+    end
+  end
+
+  sub_array.reduce(Hash.new(0)) do |word, count|
       word[count] += 1
       word
   end
-
+  
 end
 
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
