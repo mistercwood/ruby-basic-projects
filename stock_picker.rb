@@ -23,8 +23,8 @@ def stock_picker(prices)
   }
  
   best_day = profit_array.reduce { |a, el| el[0] > a[0] ? el : a }
-  print best_day[1, 2]
+  best_day[1, 2]
 
 end
 
-puts stock_picker([17,3,6,9,15,8,6,1,10])
+p stock_picker([17,3,6,9,15,8,6,1,10])
